@@ -1,0 +1,11 @@
+.btn {
+  background-color: cornflowerblue;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}

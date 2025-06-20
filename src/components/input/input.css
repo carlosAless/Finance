@@ -1,0 +1,9 @@
+.groupInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.groupInput input {
+  height: 40px;
+  max-width: 400px;
+}

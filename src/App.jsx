@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { assets } from "./assets/assets";
+import { Resumo } from "./components/resumo/Resumo";
+import { Novatransacao } from "./components/novatransacao/Novatransacao";
+import { Home } from "./components/home/Home";
+import { Link, Routes, Route } from "react-router-dom";
+import { Btn } from "./components/btn/Btn";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <nav className="navbar">
+        <div className="title">
+          <Link to={"/"}>
+            <img src={assets.logo} alt="logo" />
+            FINANCE
+          </Link>
+        </div>
+
+        <menu>
+          <ul>
+            <li>
+              <Link to="/resumo">Resumo de transações</Link>
+            </li>
+            <li>
+              <Link to="/novatransacao">
+                <Btn ico={assets.plus} text="Nova transação"></Btn>
+              </Link>
+            </li>
+          </ul>
+        </menu>
+      </nav>
+
+      <div className="app-content">
+        <Routes>
+          <Route path="/resumo" element={<Resumo />} />
+          <Route path="/novatransacao" element={<Novatransacao />} />
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
