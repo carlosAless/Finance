@@ -8,4 +8,5 @@
   align-items: center;
   justify-content: center;
   border: none;
+  max-width: 200px;
 }
