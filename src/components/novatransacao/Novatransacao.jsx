@@ -8,14 +8,13 @@ import { TransactionContext } from "../Transactions/TransactionContext";
 import { v4 as uuidv4 } from "uuid";
 
 export const Novatransacao = () => {
-  const { addTransaction } = useContext(TransactionContext); // Agora está correto
-
+  const { addTransaction } = useContext(TransactionContext);
   const [transaction, setTransaction] = useState({
-    value: 0.0,
+    id: uuidv4(),
+    value: "",
     category: "",
     description: "",
-    date: "",
-    id: uuidv4(),
+    date: new Date().toISOString().split("T")[0], // Data atual como padrão
   });
 
   const handleChange = (e) => {
@@ -31,6 +30,16 @@ export const Novatransacao = () => {
     addTransaction({
       ...transaction,
       value: parseFloat(transaction.value),
+      id: uuidv4(),
+    });
+
+    // Reseta o formulário após enviar
+    setTransaction({
+      id: uuidv4(),
+      value: "",
+      category: "",
+      description: "",
+      date: new Date().toISOString().split("T")[0],
     });
   };
 
